@@ -1,5 +1,5 @@
-﻿@using TravelTripProject.Models.Siniflar
-@model List<Blog>
+﻿
+@model TravelTripProject.Models.Siniflar.BlogYorum
 @{
     ViewBag.Title = "BlogDetay";
     Layout = "~/Views/Shared/_TestLayout.cshtml";
@@ -39,7 +39,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <div class="col-md-8 single-main">
                 <div class="single-grid">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Deger1)
                     {
                         <img src="@item.BlogImage" alt="" style="margin-bottom:20px"/>
                         <h2>@item.Baslik</h2> 
@@ -48,20 +48,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </p>
                     }
                 </div>
-
+                @foreach(var item in Model.Deger2) { 
                 <ul class="comment-list">
 
                     <li>
                         <img src="~/web2/images/avatar.png" class="img-responsive" alt="">
                         <div class="desc">
-                            <p></p>
+                            <p>@item.KullaniciAdi: @item.Yorum</p>
                         </div>
                         <div class="clearfix"></div>
                     </li>
-                </ul>
+                </ul>}
+
                 <div class="content-form">
+                    
                     <h3>Yorum yazın..</h3>
-                    <form>
+                    <form method="post">
                         <input type="text" placeholder="Kullanıcı Adı" required />
                         <input type="text" placeholder="Email Adresi" required />
                         <textarea placeholder="Yorum"></textarea>
